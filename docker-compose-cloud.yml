@@ -1,0 +1,45 @@
+version: '3'
+services:
+  front:
+    image: arquitectura-tp_front 
+    ports:
+      - 80:80
+    networks:
+      - tarjeta-network
+
+  back:
+    image: arquitectura-tp_back 
+    ports:
+      - 8080:8080
+    networks:
+      - tarjeta-network
+    environment:
+      - BACKEND_URL=http://back:8080 
+
+  db:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Newells1974
+    volumes:
+      - db_data:/var/opt/mssql
+    networks:
+      - tarjeta-network
+      
+  nginx:
+    image: nginx
+    ports:
+      - 8081:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - front
+    networks:
+      - tarjeta-network
+
+networks:
+  tarjeta-network:
+
+volumes:
+  db_data:
+
