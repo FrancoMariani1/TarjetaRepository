@@ -1,14 +1,14 @@
 version: '3'
 services:
   front:
-    image: arquitectura-tp_front 
+    image: tarjetarepositorio:front-v1
     ports:
       - 80:80
     networks:
       - tarjeta-network
 
   back:
-    image: arquitectura-tp_back 
+    image: tarjetarepositorio:back-v1
     ports:
       - 8080:8080
     networks:
