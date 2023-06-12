@@ -20,6 +20,7 @@ cd YourRepository
 
 3. Run the following command to start the containers using Docker Compose and the cloud configuration:
 docker-compose -f docker-compose-cloud.yml up
+
 This command will use the docker-compose-cloud.yml file to create and run the Front, Back, DB, and Nginx containers according to the configurations defined in that file.
 Once the containers are up and running,you can access the application in your web browser at http://localhost.
 
